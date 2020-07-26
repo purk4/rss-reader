@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="RSS Reader+" title_url="http://ajaxgaier.blogspot.com" directory_title="RSS Reader+" description="RSS Reader with extended functionality for your Google Homepage or for stand alone embedding in web pages. You can configure the number of items to show, font size, font family, title and bullets. Configurable reload frequency. Preview of item summary via tooltip and inline. Supports configuration of multiple feeds." screenshot="http://www.ajaxgaier.com/iGoogle/rss-screen1.png" thumbnail="http://www.ajaxgaier.com/iGoogle/rss-thumb1.png" author_affiliation="Zeitgeist" author="Ajax Gaier" author_email="AjaxGaier+RSSReader@gmail.com" author_location="Nice place" height="45" scrolling="false" singleton="false" render_inline="optional">
+<Require feature="dynamic-height"/>
+<Require feature="settitle"/>
+</ModulePrefs>
+<UserPref name="title" display_name="Title" default_value=""/>
+
+<UserPref name="feed" display_name="RSS feed" default_value="http://googleblog.blogspot.com/feeds/posts/default"/>
+
+<UserPref name="contentnr" display_name="Number of Items" datatype="enum" default_value="9">
+    <EnumValue value="1" display_value="1"/>
+    <EnumValue value="2" display_value="2"/>
+    <EnumValue value="3" display_value="3"/>
+    <EnumValue value="4" display_value="4"/>
+    <EnumValue value="5" display_value="5"/>
+    <EnumValue value="6" display_value="6"/>
+    <EnumValue value="7" display_value="7"/>
+    <EnumValue value="8" display_value="8"/>
+    <EnumValue value="9" display_value="9"/>
+    <EnumValue value="10" display_value="10"/>
+    <EnumValue value="11" display_value="11"/>
+    <EnumValue value="12" display_value="12"/>
+    <EnumValue value="13" display_value="13"/>
+    <EnumValue value="14" display_value="14"/>
+    <EnumValue value="15" display_value="15"/>
+    <EnumValue value="16" display_value="16"/>
+    <EnumValue value="17" display_value="17"/>
+    <EnumValue value="18" display_value="18"/>
+    <EnumValue value="19" display_value="19"/>
+</UserPref>
+<UserPref name="fontsize" display_name="Font Size (pt)" datatype="enum" default_value="7">
+    <EnumValue value="4" display_value="4"/>
+    <EnumValue value="5" display_value="5"/>
+    <EnumValue value="6" display_value="6"/>
+    <EnumValue value="7" display_value="7"/>
+    <EnumValue value="8" display_value="8"/>
+    <EnumValue value="9" display_value="9"/>
+    <EnumValue value="10" display_value="10"/>
+    <EnumValue value="11" display_value="11"/>
+    <EnumValue value="12" display_value="12"/>
+    <EnumValue value="13" display_value="13"/>
+    <EnumValue value="14" display_value="14"/>
+    <EnumValue value="15" display_value="15"/>
+    <EnumValue value="16" display_value="16"/>
+    <EnumValue value="17" display_value="17"/>
+</UserPref>
+<UserPref name="lineheight" display_name="Relative Line Height (%)" datatype="enum" default_value="70">
+    <EnumValue value="50" display_value="50%"/>
+    <EnumValue value="60" display_value="60%"/>
+    <EnumValue value="70" display_value="70%"/>
+    <EnumValue value="80" display_value="80%"/>
+    <EnumValue value="90" display_value="90%"/>
+    <EnumValue value="100" display_value="100%"/>
+    <EnumValue value="110" display_value="110%"/>
+    <EnumValue value="120" display_value="120%"/>
+    <EnumValue value="130" display_value="130%"/>
+</UserPref>
+<UserPref name="titlelink" datatype="hidden" default_value=""/>
+
+<UserPref name="bullet" display_name="Show bullet before items" datatype="bool" default_value="false"/>
+
+
+<UserPref name="reload_feed" display_name="Reload feed every time gadget is initialized; otherwise cached information will be used for some time (might slow down feed display)" datatype="bool" default_value="false"/>
+
+<UserPref name="reload_fqcy" display_name="Reload Frequency (minutes)" datatype="enum" default_value="0">
+    <EnumValue value="0" display_value="Default"/>
+    <EnumValue value="2" display_value="Every 2 Minutes"/>
+    <EnumValue value="3" display_value="Every 3 Minutes"/>
+    <EnumValue value="4" display_value="Every 4 Minutes"/>
+    <EnumValue value="5" display_value="Every 5 Minutes"/>
+    <EnumValue value="6" display_value="Every 6 Minutes"/>
+    <EnumValue value="7" display_value="Every 7 Minutes"/>
+    <EnumValue value="8" display_value="Every 8 Minutes"/>
+    <EnumValue value="9" display_value="Every 9 Minutes"/>
+    <EnumValue value="10" display_value="Every 10 Minutes"/>
+</UserPref>
+
+<UserPref name="hl_background" display_name="Highlight Background Color" default_value="FFFFFF"/>
+
+<UserPref name="font_color" display_name="Text color" default_value=""/>
+
+<UserPref name="bkg_color" display_name="Background color" default_value=""/>
+
+<UserPref name="show_summary" display_name="Show Summary" datatype="enum" default_value="0">
+    <EnumValue value="0" display_value="Nowhere"/>
+    <EnumValue value="1" display_value="In Tooltip"/>
+    <EnumValue value="2" display_value="Inline Between Titles"/>
+</UserPref>
+
+<UserPref name="inline_sum_background" display_name="Inline Summary Background" default_value="F9F9F9"/>
+
+<UserPref name="feed2" display_name="2. RSS feed" default_value=""/>
+<UserPref name="feed3" display_name="3. RSS feed" default_value=""/>
+<UserPref name="feed4" display_name="4. RSS feed" default_value=""/>
+<UserPref name="font_family" display_name="Font" default_value="arial, sans-serif"/>
+
+<UserPref name="age" display_name="Show age of entry" datatype="bool" default_value="false"/>
+
+<UserPref name="no_link_decoration" display_name="Hide link underline " datatype="bool" default_value="false"/>
+
+
+
+<Content type="html">
+<![CDATA[
+
+<!-- Load JS API -->
+<!-- 
+<script src="http://www.google.com/jsapi?key=ABQIAAAA0mwgEWnkbOhy6CdEvaErSxQm4Yc5mrPQl9MZqoni-aWoGX-xQRR4docKkmLCoPjMeYSRcJFIl_zhYQ"></script>
+-->
+
+
+<div id="feed_titles0___MODULE_ID___" style="font-size: 9px"><center>Waiting for feed information ...</center></div>
+<div id="feed_titles1___MODULE_ID___" style="font-size: 9px; display: none;"><center>Waiting for feed information ...</center></div>
+<div id="feed_titles2___MODULE_ID___" style="font-size: 9px; display: none;"><center>Waiting for feed information ...</center></div>
+<div id="feed_titles3___MODULE_ID___" style="font-size: 9px; display: none;"><center>Waiting for feed information ...</center></div>
+
+
+<script type="text/javascript">
+
+// google.load("jquery", "1");
+
+// border 
+// document.body.style.border="1px solid #aaa";
+
+var ga___MODULE_ID___;
+if (!document.URL.match("-devXX")) {
+    // _IG_Analytics("UA-568933-4", "/GHP_RSS_READER+");
+    // ga___MODULE_ID___ = new _IG_GA("UA-568933-4", "/GHP_RSS_READER+");
+    // ga___MODULE_ID___.reportPageview('GHP_RSS_READER+');
+    if (document.documentElement && document.documentElement.clientWidth) {
+	w = document.documentElement.clientWidth;
+	h = document.documentElement.clientHeight;
+	// console.log("w h ", w, h);
+	// ga___MODULE_ID___.reportEvent("RSS_Size", ""+w, ""+h, 0);
+    }
+} else {
+    // alert ("ga -dev");
+}
+
+var prefs = new gadgets.Prefs();
+feed = prefs.getString("feed");
+var g_feed_arr = [];
+g_feed_arr[0] = feed;
+content_nr = prefs.getInt("contentnr");
+font_size = prefs.getInt("fontsize");
+g_bullet = prefs.getBool("bullet");
+g_age = prefs.getBool("age");
+g_no_link_decoration = prefs.getBool("no_link_decoration");
+g_reload_feed = prefs.getBool("reload_feed");
+g_reload_fqcy = prefs.getInt("reload_fqcy");
+g_lineheight = prefs.getInt("lineheight");
+g_hl_background = prefs.getString("hl_background");
+g_font_color = prefs.getString("font_color");
+g_bkg_color = prefs.getString("bkg_color");
+g_inline_sum_background = prefs.getString("inline_sum_background");
+g_show_summary = prefs.getInt("show_summary");
+feed2 = prefs.getString("feed2");
+// console.log("feed2", feed2);
+if (feed2 != "" && feed2.search(/ +/) < 0) {
+    // g_feed_arr[1] = feed2;
+    g_feed_arr.push(feed2);
+}
+feed3 = prefs.getString("feed3");
+if (feed3 != "" && feed3.search(/ +/)  < 0 ) {
+    g_feed_arr[2] = feed3;
+}
+feed4 = prefs.getString("feed4");
+if (feed4 != "" && feed4.search(/ +/)  < 0 ) {
+    g_feed_arr[3] = feed4;
+}
+font_fam = prefs.getString("font_family");
+// console.log("feed arr", g_feed_arr);
+// ga___MODULE_ID___.reportEvent("RSS Reader", "feed nr" , g_feed_arr.length);
+	
+if (g_show_summary == 1) {
+    g_tooltip_summary = true;
+} else {
+    g_tooltip_summary = false;
+}    
+// ga___MODULE_ID___.reportEvent("RSS Reader", "summary" , g_show_summary);
+// ga___MODULE_ID___.reportPageview("RSS Reader/summary/"+g_show_summary);
+
+// get size
+var g_viewport = gadgets.window.getViewportDimensions();
+// console.log(g_viewport);
+
+// alert(feed + " " + content_nr + " " );
+// debug(document.location.href);
+
+// http://blogoscoped.com/rss.xml
+// http://googleblog.blogspot.com/feeds/posts/default
+
+var g_synd=0;
+// alert(document.location.href);
+if (_args()["synd"] || _args()["container"]) {
+    // alert("synd");
+    var platform = _args()["synd"];
+    if (platform != "ig") { 
+	g_synd=1;
+	// get args differently
+	var amp=document.location.href.indexOf("&amp;")>=0?"amp;":"";
+	feed=_args()[amp+"up_feed"];
+	content_nr=_args()[amp+"up_contentnr"] != "" ? 1.0*_args()[amp+"up_contentnr"]:9;
+	font_size=_args()[amp+"up_fontsize"] != "" ? _args()[amp+"up_fontsize"]:"9";
+	font_fam=_args()[amp+"up_font_family"] != "" ? _args()[amp+"up_font_family"]:"arial, sans-serif";
+	// debug("not ig " + feed + " " + content_nr + _args());
+    }
+}
+
+// alert("X"+prefs.getString("title")+"X");
+if (prefs.getString("title") != "") {
+    try {
+	gadgets.window.setTitle(prefs.getString("title"));
+    } catch (err) {}
+} else {
+    try {
+    	gadgets.window.setTitle("RSS Reader+");
+	// gadgets.window.setTitle("RSS +: " + content.Title);
+    } catch (err) {}
+}
+
+var entries = 10;
+var summaries = true;
+
+var params = {};  
+
+params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;  
+params[gadgets.io.RequestParameters.NUM_ENTRIES] = new Number(entries);  
+params[gadgets.io.RequestParameters.GET_SUMMARIES] = summaries; 
+
+// http://www.bestblog.de/?feed=rss2
+// http://shop.ebay.com/mistymountaindew/m.html?_ipg=&_rss=1
+
+function set_content(obj, feed_idx)
+{
+    // obj.data contains the feed data
+    var feed = obj.data;
+    // console.log(feed);
+    var html = "";
+
+    // console.log("feed_idx", feed_idx);
+
+    if (!feed_idx) feed_idx = 0;
+
+    // alert(feed);
+    var html = "<div>";
+    // alert(feed.Entry[1].Summary);
+    // alert(feed.Title);
+    if (prefs.getString("title") == "") {
+	try {
+	    gadgets.window.setTitle("RSS+: " + feed.Title.substr(0,30));
+	} catch (err) {}
+    }
+    var str, sum, l_title, sum2;
+    // loop through entries
+    for (var i in feed.Entry) {
+	str=""; sum=""; sum2="";
+	l_title = feed.Entry[i].Title;
+	if (feed.Entry[i].Summary) {
+	    // str='title="'+ feed.Entry[i].Summary +'"';
+	    sum = feed.Entry[i].Summary;
+	    // sum = sum.replace(/href=".*"/g, "");
+	    sum = sum.replace(/<div[^>]*>/g, "").replace(/<[^>]*>/g, "");
+	    sum = sum.replace(/  */g, " ").replace(/\n\n+/g,"\n\n");
+	    sum2 = sum.replace(/"/g, "");  // problem with indentation
+	    // console.log(sum);
+	    if (l_title != feed.Entry[i].Summary) {
+	       sum = l_title + "\n\n" + sum2;
+	    } else {
+		sum = "";
+	    }
+	}
+	id="id"+i+"_"+feed_idx;
+	hover='id="'+id+'" onMouseover="javascript: mouse_over_cb(\''+id+'\');" onMouseout="javascript: mouse_out_cb(\''+id+'\')" ';
+        s_fontcol="";
+        if (g_font_color  != "") {
+          s_fontcol="color: #"+g_font_color+";";
+        }
+	style=' style="font-size:'+ font_size +'pt; font-family: ' + font_fam +';' + s_fontcol  ;
+	// if (i < 2) 	alert(style);
+	if (g_bullet) {
+	    bullet="&#187;&nbsp;";
+	} else {
+	    bullet="";
+	}
+        if (g_no_link_decoration) 
+           style=style+" text-decoration: none; ";
+
+        style=style+'"';
+	// var milliseconds = (feed.Entry[i].Date) * 1000; 
+	// var milliseconds = (feed.Entry[i].Date); 
+	var l_date_str = "";
+	var date = new Date(feed.Entry[i].Date); 
+        var s_diff_date="";
+        if (g_age) {
+         var diff_date = ((new Date).valueOf() - date.valueOf())/1000;
+         if (diff_date < 3600) {
+            s_diff_date = Math.round(diff_date/60) + " min ago";
+         } else {
+           diff_date/=3600.;
+           if (diff_date < 24) {
+              s_diff_date =  Math.round(diff_date) + " h ago";
+           } else {
+             diff_date/=24.;
+             s_diff_date =  Math.round(diff_date) + " days ago";
+           }
+         }
+         // s_diff_date= '  <span style=" ">(' + s_diff_date + ")</span>";
+         s_diff_date= ' <span '+style+'"> (' + s_diff_date + ")</span>";
+        }
+	// l_date = date.toLocaleDateString() + ": ";
+	// 	l_d += date.toLocaleTimeString(); 
+	// console.log(date.toLocaleDateString());
+	var l_locdate = date.toLocaleDateString();
+	if (g_tooltip_summary) {
+	    sum=l_locdate + "\n" + sum;
+	} else {
+	    sum=l_locdate + "\n" + feed.Entry[i].Title;
+	}
+        if (g_show_summary == 2) {
+            title="";
+        } else {
+   	    title=' title="'+_hesc(sum)+'" ';
+        }
+	// l_date_str = date.getMonth()+'/'+date.getDay()+ ": ";
+
+	html += '<TR><TD style="white-space:nowrap;"><span style="line-height: '+g_lineheight+'%;">'+bullet +'<a '+title+str+hover+' '+style+' href="' + _hesc(feed.Entry[i].Link) + '" target="_blank">';
+	html += l_date_str+_hesc(feed.Entry[i].Title) +  '</a>'+s_diff_date +'</span><div style="padding-top: 2px; padding-bottom: 2px; padding-left: 5px; display: none; border: 1px solid #aaa; white-space: normal; width: '+g_viewport.width+'px; background-color: '+g_inline_sum_background+'; font-size: 70%;" id="sum_'+id+'">'+sum2.substr(0,540)+'</div></TD></TR>';
+
+	// html += '<div style="white-space: nowrap; line-height: '+g_lineheight+'%">'+bullet+'<a '+title+str+hover+' '+style+' href="' + _hesc(feed.Entry[i].Link) + '" target="_blank">';
+	// html += l_date_str+_hesc(feed.Entry[i].Title) + '</a></div>';
+    }
+    if (feed_idx > 0 || g_feed_arr.length > 1) {
+       // console.log("feed_idx2", feed_idx);
+       div_str="feed_titles"+feed_idx+"___MODULE_ID___";
+       str_title=feed.Title.substr(0,57);
+       martop = feed_idx > 0 ? 3 : 0;
+       str_break='<div title="'+str_title+'" style="margin-top: '+martop+'px; background-color: #efefef; border: 1px solid #aaa; font-size: 100%;"><b>'+str_title+'</b></div>';
+       _gel(div_str).innerHTML = str_break + '<TABLE border="0" cellspacing="1" cellpadding="0" width="100%">' + html + '</TABLE>';
+       _gel(div_str).style.display = 'block';
+    } else {
+    _gel("feed_titles0___MODULE_ID___").innerHTML = '<TABLE border="0" cellspacing="1" cellpadding="0" width="100%">' + html + '</TABLE>';
+    }
+    if (!g_synd) {
+        gadgets.window.adjustHeight();
+    }
+
+    if (g_bkg_color != "") {
+      document.body.style.backgroundColor = "#" + g_bkg_color;
+    }
+}
+
+html+="</div>";
+
+// Loading ...
+str='<center>Waiting for feed information ...</center>';
+_gel("feed_titles0___MODULE_ID___").innerHTML = str;
+if (feed != "" && ga___MODULE_ID___) {
+    // ga___MODULE_ID___.reportEvent("GHP_RSS_READER", "feed", feed);
+}
+
+function mouse_over_cb(id) {
+    document.getElementById(id).style.backgroundColor=''+g_hl_background+'';
+    if (g_show_summary == 2)
+    document.getElementById("sum_"+id).style.display = "block";
+    gadgets.window.adjustHeight();
+}
+function mouse_out_cb(id) {
+    if (g_bkg_color != "") {
+      document.getElementById(id).style.backgroundColor = "#" + g_bkg_color;
+    } else {
+      document.getElementById(id).style.backgroundColor = "";
+      // document.getElementById(id).style.backgroundColor='';
+    }
+    if (g_show_summary == 2)
+    document.getElementById("sum_"+id).style.display = "none";
+    gadgets.window.adjustHeight();
+}
+
+
+if (g_reload_feed) {
+    t = (new Date()).getTime();
+    var fi=feed.indexOf("?")>=0?"&":"?";
+    // _IG_FetchFeedAsJSON(feed+fi+"upd="+t, set_content, content_nr, false);
+    load_feed(feed+fi+"upd="+t, set_content, content_nr, false);
+} else {
+    // _IG_FetchFeedAsJSON(feed, set_content, content_nr, false);
+    // console.log("feed X"+feed+"X");
+    if (feed.length <= 0 || feed.match(/ +/)) {
+	_gel("feed_titles0___MODULE_ID___").innerHTML = "<center>Feed URL is empty ... Cannot load content ...</center>";
+    } else {
+	load_feed(feed, set_content, content_nr, false);
+    }
+}
+
+//if (!g_synd) {
+//    _IG_AdjustIFrameHeight();
+//}
+
+if (g_reload_fqcy != 0) {
+    // alert (g_reload_fqcy);
+    // g_reload_fqcy=1;
+    setTimeout('rss_reload___MODULE_ID___()', 1000*60*g_reload_fqcy);
+}
+
+// reload
+function rss_reload___MODULE_ID___ () {
+
+    // alert ("reload " + g_reload_fqcy);
+
+    t = (new Date()).getTime();
+    var fi=feed.indexOf("?")>=0?"&":"?";
+    // _IG_FetchFeedAsJSON(feed+fi+"upd="+t, set_content, content_nr, false);
+    load_feed(feed+fi+"upd="+t, set_content, content_nr, false);
+
+    setTimeout('rss_reload___MODULE_ID___()', 1000*60*g_reload_fqcy);
+
+}
+
+function load_feed (url, callback, content_nr) {
+    // console.log("load feed " + url);
+    params[gadgets.io.RequestParameters.NUM_ENTRIES] = new Number(content_nr);
+    // gadgets.io.makeRequest(url, callback, params);
+    gadgets.io.makeRequest(url, function (obj) {
+       set_content(obj);
+     }, params);
+
+    if (g_feed_arr.length > 1) {
+    var feed_idx;
+    for (feed_idx = 1; feed_idx < g_feed_arr.length; feed_idx++) {
+        makeRequest_wrapper(g_feed_arr[feed_idx], feed_idx, params)
+    }
+    }
+
+};
+
+function makeRequest_wrapper (url, l_feed_idx, params) {
+
+       gadgets.io.makeRequest(url, function (l_obj) {
+           set_content(l_obj, l_feed_idx);
+        }, params);
+
+}
+
+//
+// not used presently
+//
+function get_rss_feed () {
+    t = (new Date()).getTime();
+    var fi=feed.indexOf("?")>=0?"&":"?";
+    var url=feed+fi+"upd="+t;
+    url=feed+fi+"upd="+t;
+    console.log(url);
+
+    // params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;  
+    // var url = "http://gadget-doc-examples.googlecode.com/svn/trunk/opensocial-gadgets/Contacts.csv";
+    gadgets.io.makeRequest(url, gio_response, params);
+}
+
+var showdate = true;
+
+function gio_response (obj) {
+    
+    // obj.data contains the feed data
+    var feed = obj.data;
+    console.log(obj.data);
+    var html = "";
+    
+    // Display the feed title and description
+    html += "<div><b>" + feed.Title + "</b></div>";
+    html += "<div>" + feed.Description + "</div><br>";
+    
+    // Access the data for a given entry
+    if (feed.Entry) {
+	for (var i = 0; i < feed.Entry.length; i++) {
+	    html += "<div>"
+		+ "<a target='_blank' href='" + feed.Entry[i].Link + "'>"
+		+ feed.Entry[i].Title
+		+ "</a> ";
+	    if (showdate==true)
+		{ 
+		    // The feed entry Date field contains the timestamp in seconds
+		    // since Jan. 1, 1970. To convert it to the milliseconds needed
+		    // to initialize the JavaScript Date object with the correct date, 
+		    // multiply by 1000.
+		    var milliseconds = (feed.Entry[i].Date) * 1000; 
+		    var date = new Date(milliseconds); 
+		    html += date.toLocaleDateString();
+		    html += " ";
+		    html += date.toLocaleTimeString(); 
+		}
+	    if (summaries==true) { 
+		html += "<br><i>" + feed.Entry[i].Summary + "</i>";
+	    }
+	    html += "</div>";
+	}
+    console.log(html);
+    }        
+    // document.getElementById('content_div').innerHTML = html;
+    console.log(html);
+};
+
+// get_rss_feed ();
+
+</script>
+]]>
+</Content>
+</Module>
